@@ -1104,6 +1104,17 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/3.0.5.RELEASE/spring-web-3.0.5.RELEASE-sources.jar!/" />
       </SOURCES>
     </library>
+    <library name="Maven: paypal.payflow:payflow-sdk:4.31">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/paypal/payflow/payflow-sdk/4.31/payflow-sdk-4.31.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/paypal/payflow/payflow-sdk/4.31/payflow-sdk-4.31-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/paypal/payflow/payflow-sdk/4.31/payflow-sdk-4.31-sources.jar!/" />
+      </SOURCES>
+    </library>
     <library name="Maven: wsdl4j:wsdl4j:1.6.2">
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/wsdl4j/wsdl4j/1.6.2/wsdl4j-1.6.2.jar!/" />
