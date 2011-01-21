@@ -3,7 +3,13 @@ package org.payments4j.examples;
 
 import com.cybersource.schemas.transaction_data.transactionprocessor.ITransactionProcessor;
 import com.cybersource.schemas.transaction_data.transactionprocessor.TransactionProcessor;
-import com.cybersource.schemas.transaction_data_1.*;
+import com.cybersource.schemas.transaction_data_1.BillTo;
+import com.cybersource.schemas.transaction_data_1.CCAuthService;
+import com.cybersource.schemas.transaction_data_1.Card;
+import com.cybersource.schemas.transaction_data_1.Item;
+import com.cybersource.schemas.transaction_data_1.PurchaseTotals;
+import com.cybersource.schemas.transaction_data_1.ReplyMessage;
+import com.cybersource.schemas.transaction_data_1.RequestMessage;
 import org.apache.cxf.endpoint.Client;
 import org.apache.cxf.endpoint.Endpoint;
 import org.apache.cxf.frontend.ClientProxy;
@@ -32,9 +38,9 @@ public class CybersourceClientExample {
   private static final String MERCHANT_ID = "merchant_id";
   private static final String MERCHANT_KEY = "merchant_key";
 
-  private static final String SERVER_URL = "https://ics2wstest.ic3.com/commerce/1.x/transactionProcessor";
+  private static final String SERVER_URL = "https://ics2wstest.ic3.com/commerce/1.x/transactionProcessor/CyberSourceTransaction_1.56.wsdl";
 
-  private static final String CLIENT_LIB_VERSION = Version.getCompleteVersionString() + "/1.5.10"; // Axis Version / WSS4J Version
+  private static final String CLIENT_LIB_VERSION = Version.getCompleteVersionString() + "/1.5.10"; // CXF Version / WSS4J Version
   private static final String CLIENT_LIBRARY = "Java CXF WSS4J";
   private static final String CLIENT_ENV = System.getProperty("os.name") + "/" +
                                            System.getProperty("os.version") + "/" +
@@ -66,7 +72,7 @@ public class CybersourceClientExample {
 
     ITransactionProcessor processor = new TransactionProcessor(new URL(SERVER_URL)).getPortXML();
 
-    // Add WS-Security Headers to the Request
+    //  Add WS-Security Headers to the Request
     addSecurityValues(processor);
 
     ReplyMessage reply = processor.runTransaction(request);

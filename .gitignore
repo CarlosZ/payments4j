@@ -1,4 +1,6 @@
 target/
+logs/
 *.wsdl
 *.xsd
 *.iws
+.DS_Store
