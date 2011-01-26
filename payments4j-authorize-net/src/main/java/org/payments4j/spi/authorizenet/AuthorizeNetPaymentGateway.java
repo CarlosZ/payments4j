@@ -30,7 +30,7 @@ public class AuthorizeNetPaymentGateway implements PaymentGateway {
   }
 
   /**
-   * {inheritDoc}
+   * {@inheritDoc}
    */
   @Override
   public TransactionResponse purchase(Money money, CreditCard creditCard, Map<String, Object> optionals) {
@@ -38,7 +38,7 @@ public class AuthorizeNetPaymentGateway implements PaymentGateway {
   }
 
   /**
-   * {inheritDoc}
+   * {@inheritDoc}
    */
   @Override
   public TransactionResponse authorize(Money money, CreditCard creditCard, Map<String, Object> optionals) {
@@ -46,7 +46,7 @@ public class AuthorizeNetPaymentGateway implements PaymentGateway {
   }
 
   /**
-   * {inheritDoc}
+   * {@inheritDoc}
    */
   @Override
   public TransactionResponse capture(Money money, String authorizationId, Map<String, Object> optionals) {
@@ -54,7 +54,7 @@ public class AuthorizeNetPaymentGateway implements PaymentGateway {
   }
 
   /**
-   * {inheritDoc}
+   * {@inheritDoc}
    */
   @Override
   public TransactionResponse revert(String transactionId, Map<String, Object> optionals) {
@@ -62,7 +62,7 @@ public class AuthorizeNetPaymentGateway implements PaymentGateway {
   }
 
   /**
-   * {inheritDoc}
+   * {@inheritDoc}
    */
   @Override
   public TransactionResponse credit(Money money, String transactionId, Map<String, Object> optionals) {
@@ -79,7 +79,7 @@ public class AuthorizeNetPaymentGateway implements PaymentGateway {
   }
 
   /**
-   * {inheritDoc}
+   * {@inheritDoc}
    *
    * UNSUPPORTED
    */
@@ -89,7 +89,7 @@ public class AuthorizeNetPaymentGateway implements PaymentGateway {
   }
 
   /**
-   * {inheritDoc}
+   * {@inheritDoc}
    *
    * UNSUPPORTED
    */
@@ -99,7 +99,7 @@ public class AuthorizeNetPaymentGateway implements PaymentGateway {
   }
 
   /**
-   * {inheritDoc}
+   * {@inheritDoc}
    *
    * UNSUPPORTED
    */
@@ -109,7 +109,7 @@ public class AuthorizeNetPaymentGateway implements PaymentGateway {
   }
 
   /**
-   * {inheritDoc}
+   * {@inheritDoc}
    */
   @Override
   public boolean supportsPurchase() {
@@ -117,7 +117,7 @@ public class AuthorizeNetPaymentGateway implements PaymentGateway {
   }
 
   /**
-   * {inheritDoc}
+   * {@inheritDoc}
    */
   @Override
   public boolean supportsAuthorize() {
@@ -125,7 +125,7 @@ public class AuthorizeNetPaymentGateway implements PaymentGateway {
   }
 
   /**
-   * {inheritDoc}
+   * {@inheritDoc}
    */
   @Override
   public boolean supportsCapture() {
@@ -133,7 +133,7 @@ public class AuthorizeNetPaymentGateway implements PaymentGateway {
   }
 
   /**
-   * {inheritDoc}
+   * {@inheritDoc}
    */
   @Override
   public boolean supportsRevert() {
@@ -141,7 +141,7 @@ public class AuthorizeNetPaymentGateway implements PaymentGateway {
   }
 
   /**
-   * {inheritDoc}
+   * {@inheritDoc}
    */
   @Override
   public boolean supportsCredit() {
@@ -149,7 +149,7 @@ public class AuthorizeNetPaymentGateway implements PaymentGateway {
   }
 
   /**
-   * {inheritDoc}
+   * {@inheritDoc}
    */
   @Override
   public boolean supportsStoreCreditCard() {
@@ -157,7 +157,7 @@ public class AuthorizeNetPaymentGateway implements PaymentGateway {
   }
 
   /**
-   * {inheritDoc}
+   * {@inheritDoc}
    */
   @Override
   public boolean supportsEvictCreditCard() {

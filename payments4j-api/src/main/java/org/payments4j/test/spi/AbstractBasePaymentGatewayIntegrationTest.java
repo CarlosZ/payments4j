@@ -1,7 +1,8 @@
-package org.payments4j.spi.authorizenet;
+package org.payments4j.test.spi;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.payments4j.core.PaymentGateway;
 import org.payments4j.core.TransactionResponse;
 import org.payments4j.model.CreditCard;
 import org.payments4j.model.CreditCardBuilder;
@@ -19,12 +20,12 @@ import static org.payments4j.model.CreditCard.Type.MASTER_CARD;
 /**
  *
  */
-public class AuthorizeNetPaymentGatewayIntegrationTest {
+public abstract class AbstractBasePaymentGatewayIntegrationTest {
 
   private Money money;
   private CreditCard creditCard;
-  private AuthorizeNetPaymentGateway gateway;
-  private Properties credentials;
+  private PaymentGateway gateway;
+  protected Properties credentials;
 
   @Before
   public void setUp() throws Exception {
@@ -34,18 +35,19 @@ public class AuthorizeNetPaymentGatewayIntegrationTest {
     }
     int amount = new Random(System.nanoTime()).nextInt(30);
     money = new MoneyBuilder().withAmount(String.valueOf(amount)).withCurrency(Locale.US).build();
-    creditCard = new CreditCardBuilder().withFirstName("Joe")
-                                                   .withLastName("Doe")
-                                                   .withMonth("11")
-                                                   .withYear("2013")
-                                                   .withNumber("4111111111111111")
-                                                   .withSecurityCode("132")
-                                                   .withType(MASTER_CARD)
-                                                   .build();
-    gateway = new AuthorizeNetPaymentGateway(credentials.getProperty("authorizenet.apiLoginId"),
-                                             credentials.getProperty("authorizenet.transactionKey"));
-    gateway.setTest(true);
+    creditCard = new CreditCardBuilder()
+        .withFirstName("Joe")
+        .withLastName("Doe")
+        .withMonth("11")
+        .withYear("13")
+        .withNumber("4111111111111111")
+        .withSecurityCode("132")
+        .withType(MASTER_CARD)
+        .build();
+    this.gateway = buildGateway();
   }
+
+  protected abstract PaymentGateway buildGateway();
 
   @Test
   public void testAuthCaptureCredit() throws Exception {

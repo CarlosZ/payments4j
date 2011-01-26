@@ -4,7 +4,7 @@
 
   <groupId>org.payments4j</groupId>
   <artifactId>payments4j</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>${project.version}</version>
   <packaging>pom</packaging>
 
   <name>payments4j</name>
@@ -12,13 +12,13 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.version>1.0-SNAPSHOT</project.version>
   </properties>
-  
+
   <modules>
-    <module>payments4j-integrations-tests</module>
     <module>payments4j-api</module>
     <module>payments4j-authorize-net</module>
-    <module>payments4j-native-examples</module>
+    <module>payments4j-payflowpro</module>
   </modules>
 
   <repositories>
@@ -47,12 +47,11 @@
       <version>1.6.1</version>
       <scope>compile</scope>
     </dependency>
-    
+
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.8.2</version>
-      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.mockito</groupId>
@@ -64,7 +63,6 @@
       <groupId>org.easytesting</groupId>
       <artifactId>fest-assert</artifactId>
       <version>1.3</version>
-      <scope>test</scope>
     </dependency>
   </dependencies>
 
@@ -81,5 +79,26 @@
       </plugin>
     </plugins>
   </build>
+
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>2.7</version>
+        <configuration>
+          <aggregate>true</aggregate>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jxr-plugin</artifactId>
+        <version>2.2</version>
+        <configuration>
+          <aggregate>true</aggregate>
+        </configuration>
+      </plugin>
+    </plugins>
+  </reporting>
 
 </project>

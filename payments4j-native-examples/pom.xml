@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
-
-  <parent>
-    <artifactId>payments4j</artifactId>
-    <groupId>org.payments4j</groupId>
-    <version>1.0-SNAPSHOT</version>
-  </parent>
 
   <groupId>org.payments4j</groupId>
   <artifactId>payments4j-native-examples</artifactId>
@@ -84,7 +79,8 @@
               <sourceRoot>${project.build.directory}/generated-sources/main/java</sourceRoot>
               <wsdlOptions>
                 <wsdlOption>
-                  <wsdl>${project.parent.basedir}/wsdl/CyberSourceTransaction_1.55.wsdl</wsdl>
+                  <!--<wsdl>${basedir}/../wsdl/CyberSourceTransaction_1.55.wsdl</wsdl>-->
+                  <wsdl>https://ics2wstest.ic3.com/commerce/1.x/transactionProcessor/CyberSourceTransaction_1.56.wsdl</wsdl>
                   <extraargs>
                     <extraarg>-client</extraarg>
                   </extraargs>

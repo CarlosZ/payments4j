@@ -1,14 +1,12 @@
 package org.payments4j.model;
 
-//import org.springframework.beans.BeanWrapper;
-//import org.springframework.beans.BeanWrapperImpl;
 import org.apache.commons.beanutils.WrapDynaBean;
 
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- *
+ * Base class for Building Model Objects. Specially useful for tests.
  */
 public class AbstractBaseModelBuilder<T> {
 
@@ -33,17 +31,5 @@ public class AbstractBaseModelBuilder<T> {
     } catch (IllegalAccessException e) {
       throw new RuntimeException(e);
     }
-/*    try {
-      BeanWrapper wrapper = new BeanWrapperImpl(clazz.newInstance());
-      for (String key : values.keySet()) {
-        wrapper.setPropertyValue(key, values.get(key));
-      }
-      values.clear();
-      return (T) wrapper.getWrappedInstance();
-    } catch (InstantiationException e) {
-      throw new RuntimeException(e);
-    } catch (IllegalAccessException e) {
-      throw new RuntimeException(e);
-    }*/
   }
 }

@@ -1,5 +1,9 @@
 package org.payments4j.model;
 
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
+import org.apache.commons.lang.builder.ToStringBuilder;
+
 /**
  *
  */
@@ -85,5 +89,59 @@ public class Address {
 
   public void setPhone(String phone) {
     this.phone = phone;
+  }
+
+  @Override
+  public int hashCode() {
+    return new HashCodeBuilder()
+        .append(this.name)
+        .append(this.company)
+        .append(this.address1)
+        .append(this.address2)
+        .append(this.city)
+        .append(this.state)
+        .append(this.countryIsoCode)
+        .append(this.postalCode)
+        .append(this.phone)
+        .toHashCode();
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+
+    Address that = (Address) o;
+
+    return new EqualsBuilder()
+        .append(this.name, that.name)
+        .append(this.company, that.company)
+        .append(this.address1, that.address1)
+        .append(this.address2, that.address2)
+        .append(this.city, that.city)
+        .append(this.state, that.state)
+        .append(this.countryIsoCode, that.countryIsoCode)
+        .append(this.postalCode, that.postalCode)
+        .append(this.phone, that.phone)
+        .isEquals();
+  }
+
+  @Override
+  public String toString() {
+    return new ToStringBuilder(this)
+        .append("name", this.name)
+        .append("company", this.company)
+        .append("address1", this.address1)
+        .append("address2", this.address2)
+        .append("city", this.city)
+        .append("state", this.state)
+        .append("countryIsoCode", this.countryIsoCode)
+        .append("postalCode", this.postalCode)
+        .append("phone", this.phone)
+        .toString();
   }
 }

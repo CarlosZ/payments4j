@@ -1,5 +1,9 @@
 package org.payments4j.core;
 
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
+import org.apache.commons.lang.builder.ToStringBuilder;
+
 /**
  * <p>
  * Response returned by a <code>PaymentGateway</code> after a transaction is run.
@@ -78,5 +82,56 @@ public class TransactionResponse {
 
   public void setCvvResponse(CvvResponse cvvResponse) {
     this.cvvResponse = cvvResponse;
+  }
+
+  @Override
+  public int hashCode() {
+    return new HashCodeBuilder()
+        .append(successful)
+        .append(test)
+        .append(authorizationId)
+        .append(message)
+        .append(code)
+        .append(reasonCode)
+        .append(avsResponse)
+        .append(cvvResponse)
+        .toHashCode();
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+
+    TransactionResponse that = (TransactionResponse) o;
+
+    return new EqualsBuilder()
+        .append(this.successful, that.successful)
+        .append(this.test, that.test)
+        .append(this.authorizationId, that.authorizationId)
+        .append(this.message, that.message)
+        .append(this.code, that.code)
+        .append(this.reasonCode, that.reasonCode)
+        .append(this.avsResponse, that.avsResponse)
+        .append(this.avsResponse, that.avsResponse)
+        .isEquals();
+  }
+
+  @Override
+  public String toString() {
+    return new ToStringBuilder(this)
+        .append("successful", successful)
+        .append("test", test)
+        .append("authorizationId", authorizationId)
+        .append("message", message)
+        .append("code", code)
+        .append("reasonCode", reasonCode)
+        .append("avsResponse", avsResponse)
+        .append("cvvResponse", cvvResponse)
+        .toString();
   }
 }
