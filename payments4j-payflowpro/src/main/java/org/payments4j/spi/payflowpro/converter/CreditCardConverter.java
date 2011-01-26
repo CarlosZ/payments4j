@@ -22,7 +22,7 @@ public class CreditCardConverter extends AbstractBaseConverter {
   public List<Pair> toParamsList() {
     List<Pair> params = new ArrayList<Pair>();
     addPair(params, "ACCT", creditCard.getNumber());
-    addPair(params, "EXPDATE", format("%s%s", creditCard.getMonth(), creditCard.getYear()));
+    addPair(params, "EXPDATE", format("%s%s", creditCard.getMonth(), creditCard.getYear().substring(2)));
     addPair(params, "CVV2", creditCard.getSecurityCode());
     addPair(params, "FIRSTNAME", creditCard.getFirstName());
     addPair(params, "LASTNAME", creditCard.getLastName());

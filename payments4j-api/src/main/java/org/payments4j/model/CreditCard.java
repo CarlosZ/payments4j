@@ -4,6 +4,8 @@ import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.commons.lang.builder.ToStringBuilder;
 
+import static com.google.common.base.Preconditions.checkArgument;
+
 /**
  *
  */
@@ -50,6 +52,8 @@ public class CreditCard {
   }
 
   public void setMonth(String month) {
+    checkArgument(Integer.valueOf(month) >= 1 && Integer.valueOf(month) <= 12,
+                  "The expiration month must be between 1 and 12.");
     this.month = month;
   }
 
@@ -58,6 +62,8 @@ public class CreditCard {
   }
 
   public void setYear(String year) {
+    checkArgument(Integer.valueOf(year) >= 1950 && Integer.valueOf(year) <= 3000,
+                  "The expiration year must be between 1950 and 3000.");
     this.year = year;
   }
 
@@ -74,6 +80,8 @@ public class CreditCard {
   }
 
   public void setSecurityCode(String securityCode) {
+    checkArgument(securityCode.length() >= 2 && securityCode.length() <= 4,
+                  "The security code length must be between 2 and 4 characters.");
     this.securityCode = securityCode;
   }
 

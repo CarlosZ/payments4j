@@ -20,7 +20,7 @@
     <dependency>
       <groupId>org.payments4j</groupId>
       <artifactId>payments4j-api</artifactId>
-      <version>${project.version}</version>
+      <version>1.0-SNAPSHOT</version>
       <scope>compile</scope>
     </dependency>
     <dependency>

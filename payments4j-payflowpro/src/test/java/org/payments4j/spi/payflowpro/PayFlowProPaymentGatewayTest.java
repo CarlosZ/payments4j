@@ -53,7 +53,7 @@ public class PayFlowProPaymentGatewayTest {
         .withFirstName("John")
         .withLastName("Doe")
         .withMonth("01")
-        .withYear("12")
+        .withYear("2012")
         .withType(MASTER_CARD)
         .withSecurityCode("123").build();
 
