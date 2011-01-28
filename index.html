@@ -15,17 +15,26 @@
     }
     #container {
       margin: 0 auto;
-      width: 700px;
+      width: 900px;
     }
-		h1 { font-size: 3.8em; color: #755510; margin-bottom: 3px; }
+    #project_vitals {
+      width: 550px; 
+      float: left;
+    }
+    #project_news {
+      width: 340px;
+      float: left;
+    }
+		h1 { font-size: 3.8em; color: #F77F07; margin-bottom: 3px; }
 		h1 .small { font-size: 0.4em; }
 		h1 a { text-decoration: none }
-		h2 { font-size: 1.5em; color: #755510; }
-    h3 { text-align: center; color: #755510; }
-    a { color: #755510; }
+		h2 { font-size: 1.5em; color: #F77F07; }
+    h3 { text-align: center; color: #F77F07; }
+    a { color: #D16A02; }
     .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
     .download { float: right; }
-		pre { background: #000; color: #fff; padding: 15px;}
+    .clearb { clear: both; }
+		pre { background: #000; color: #fff; padding: 15px; margin: 10px; }
     hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
     .footer { text-align:center; padding-top:30px; font-style: italic; }
 	</style>
@@ -48,68 +57,81 @@
   <a href="http://github.com/CarlosZ/payments4j"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
 
   <div id="container">
+    <div id="header">
+      <div class="download">
+        <a href="http://github.com/CarlosZ/payments4j/zipball/master">
+          <img border="0" width="90" src="http://github.com/images/modules/download/zip.png"></a>
+        <a href="http://github.com/CarlosZ/payments4j/tarball/master">
+          <img border="0" width="90" src="http://github.com/images/modules/download/tar.png"></a>
+      </div>
 
-    <div class="download">
-      <a href="http://github.com/CarlosZ/payments4j/zipball/master">
-        <img border="0" width="90" src="http://github.com/images/modules/download/zip.png"></a>
-      <a href="http://github.com/CarlosZ/payments4j/tarball/master">
-        <img border="0" width="90" src="http://github.com/images/modules/download/tar.png"></a>
+      <h1><a href="http://github.com/CarlosZ/payments4j">payments4j</a></h1>
+
+      <div class="description">
+        Java library to integrate to different payment gateways.
+      </div>
     </div>
 
-    <h1><a href="http://github.com/CarlosZ/payments4j">payments4j</a></h1>
+    <div class="clearb"/>
 
-    <div class="description">
-      Java library to integrate to different payment gateways.
+    <div id="project_vitals">
+
+      <h2>Documentation</h2>
+      <p>
+        <ul>
+          <li><a href="payments4j/index.html">Maven Docs</a></li>
+          <li><a href="https://github.com/CarlosZ/payments4j/wiki">Wiki</a></li>
+        </ul>
+      </p>
+
+      <h2>Community</h2>
+      <p>
+      <table border=0 style="background-color: #fff; padding: 5px;" cellspacing=0>
+        <tr>
+          <td><img src="http://groups.google.com/intl/en/images/logos/groups_logo_sm.gif" height=30 width=140 alt="Google Groups"></td>
+        </tr>
+        <tr>
+          <td style="padding-left: 5px"><b>Subscribe to payments4j</b></td>
+        </tr>
+        <form action="http://groups.google.com/group/payments4j/boxsubscribe">
+          <input type=hidden name="hl" value="en">
+          <tr>
+            <td style="padding-left: 5px;">
+              Email: <input type=text name=email><input type=submit name="sub" value="Subscribe">
+            </td>
+          </tr>
+        </form>
+        <tr>
+          <td align=right><a href="http://groups.google.com/group/payments4j?hl=en">Visit this group</a></td>
+        </tr>
+      </table>
+      </p>
+      
+      <h2>Download</h2>
+      <p>
+        You can download this project in either
+        <a href="http://github.com/CarlosZ/payments4j/zipball/master">zip</a> or
+        <a href="http://github.com/CarlosZ/payments4j/tarball/master">tar</a> formats.
+      </p>
+      <p>You can also clone the project with <a href="http://git-scm.com">Git</a>
+        by running:
+        <pre>$ git clone git://github.com/CarlosZ/payments4j</pre>
+      </p>
+
+      <h2>Authors</h2>
+      <p><a href="http://github.com/CarlosZ">CarlosZ</a> (carlosluiszuniga [at] gmail.com)<br/></p>
+      <h2>Contact</h2>
+      <p><a href="http://github.com/CarlosZ">CarlosZ</a> (carlosluiszuniga [at] gmail.com)<br/>      </p>
     </div>
 
-    <h2>Documentation</h2>
-    <p>
-      <ul>
-        <li><a href="payments4j/index.html">Maven Docs</a></li>
-        <li><a href="https://github.com/CarlosZ/payments4j/wiki">Wiki</a></li>
-      </ul>
-    </p>
-    <h2>Authors</h2>
-    <p><a href="http://github.com/CarlosZ">CarlosZ</a> (carlosluiszuniga [at] gmail.com)<br/></p>
-    <h2>Contact</h2>
-    <p><a href="http://github.com/CarlosZ">CarlosZ</a> (carlosluiszuniga [at] gmail.com)<br/>      </p>
+    <div id="project_news">
+      <script type="text/javascript" charset="utf-8" src="http://static.polldaddy.com/p/4464232.js"></script>
+      <noscript>
+        <a href="http://polldaddy.com/poll/4464232/">Which Payment Gateway should we support next?</a><span style="font-size:9px;"><a href="http://polldaddy.com/features-surveys/">online survey</a></span>
+      </noscript>
+    </div>
 
-
-    <h2>Community</h2>
-    <p>
-    <table border=0 style="background-color: #fff; padding: 5px;" cellspacing=0>
-      <tr><td>
-      <img src="http://groups.google.com/intl/en/images/logos/groups_logo_sm.gif"
-             height=30 width=140 alt="Google Groups">
-      </td></tr>
-      <tr><td style="padding-left: 5px">
-      <b>Subscribe to payments4j</b>
-      </td></tr>
-      <form action="http://groups.google.com/group/payments4j/boxsubscribe">
-      <input type=hidden name="hl" value="en">
-      <tr><td style="padding-left: 5px;">
-      Email: <input type=text name=email>
-      <input type=submit name="sub" value="Subscribe">
-      </td></tr>
-    </form>
-    <tr><td align=right>
-      <a href="http://groups.google.com/group/payments4j?hl=en">Visit this group</a>
-    </td></tr>
-    </table>
-
-    </p>
-    <h2>Download</h2>
-    <p>
-      You can download this project in either
-      <a href="http://github.com/CarlosZ/payments4j/zipball/master">zip</a> or
-      <a href="http://github.com/CarlosZ/payments4j/tarball/master">tar</a> formats.
-    </p>
-    <p>You can also clone the project with <a href="http://git-scm.com">Git</a>
-      by running:
-      <pre>$ git clone git://github.com/CarlosZ/payments4j</pre>
-    </p>
-
-    <div class="footer">
+    <div class="footer clearb">
       get the source code on GitHub : <a href="http://github.com/CarlosZ/payments4j">CarlosZ/payments4j</a>
     </div>
 
