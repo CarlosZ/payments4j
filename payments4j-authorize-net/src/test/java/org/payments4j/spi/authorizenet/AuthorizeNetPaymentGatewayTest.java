@@ -98,6 +98,8 @@ public class AuthorizeNetPaymentGatewayTest {
     Transaction mockTransaction = setUpTransactionMock(CREDIT, new BigDecimal("10"));
     HashMap<String, Object> optionals = new HashMap<String, Object>();
     optionals.put("creditCardNumber", "4111111111111111");
+    optionals.put("creditCardMonth", "11");
+    optionals.put("creditCardYear", "2010");
 
     TransactionResponse transactionResponse = gateway.credit(money, "SOME_AUTH_ID", optionals);
 
@@ -105,6 +107,8 @@ public class AuthorizeNetPaymentGatewayTest {
     verify(mockTransaction).setTransactionId("SOME_AUTH_ID");
     CreditCard value = captureCreditCard(mockTransaction);
     assertThat(value.getCreditCardNumber()).isEqualTo("4111111111111111");
+    assertThat(value.getExpirationMonth()).isEqualTo("11");
+    assertThat(value.getExpirationYear()).isEqualTo("2010");
     verifyTransactionResponse(transactionResponse, "01", "some reason", "01", "2222");
   }
 

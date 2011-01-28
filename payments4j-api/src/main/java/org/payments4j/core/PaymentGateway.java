@@ -24,85 +24,85 @@ public interface PaymentGateway {
    *
    * @param money Amount for the transaction.
    * @param creditCard Credit Card to charge the transaction to.
-   * @param optionals Optional Gateway-specific data, that will be sent to the Gateway service.
+   * @param options Optional Gateway-specific data, that will be sent to the Gateway service.
    *
    * @return The response from the gateway.
    */
-  TransactionResponse purchase(Money money, CreditCard creditCard, Map<String, Object> optionals);
+  TransactionResponse purchase(Money money, CreditCard creditCard, Map<String, Object> options);
 
   /**
    * Runs an authorize transaction against the <code>PaymentGateway</code>.
    *
    * @param money Amount for the transaction.
    * @param creditCard Credit Card to authorize the transaction to.
-   * @param optionals Optional Gateway-specific data, that will be sent to the Gateway service.
+   * @param options Optional Gateway-specific data, that will be sent to the Gateway service.
    *
    * @return The response from the gateway.
    */
-  TransactionResponse authorize(Money money, CreditCard creditCard, Map<String, Object> optionals);
+  TransactionResponse authorize(Money money, CreditCard creditCard, Map<String, Object> options);
 
   /**
    * Runs a capture transaction against the <code>PaymentGateway</code>.
    *
    * @param money Amount for the transaction.
    * @param authorizationId Id of previously run authorization transaction.
-   * @param optionals Optional Gateway-specific data, that will be sent to the Gateway service.
+   * @param options Optional Gateway-specific data, that will be sent to the Gateway service.
    *
    * @return The response from the gateway.
    */
-  TransactionResponse capture(Money money, String authorizationId, Map<String, Object> optionals);
+  TransactionResponse capture(Money money, String authorizationId, Map<String, Object> options);
 
   /**
    * Runs a revert(void) transaction against the <code>PaymentGateway</code>.
    *
    * @param transactionId Identifier of the transaction to revert(void).
-   * @param optionals Optional Gateway-specific data, that will be sent to the Gateway service.
+   * @param options Optional Gateway-specific data, that will be sent to the Gateway service.
    *
    * @return The response from the gateway.
    */
-  TransactionResponse revert(String transactionId, Map<String, Object> optionals);
+  TransactionResponse revert(String transactionId, Map<String, Object> options);
 
   /**
    * Runs a credit transaction against the <code>PaymentGateway</code>.
    *
    * @param money Amount for the transaction.
    * @param transactionId Identifier of the transaction to credit.
-   * @param optionals Optional Gateway-specific data, that will be sent to the Gateway service.
+   * @param options Optional Gateway-specific data, that will be sent to the Gateway service.
    *
    * @return The response from the gateway.
    */
-  TransactionResponse credit(Money money, String transactionId, Map<String, Object> optionals);
+  TransactionResponse credit(Money money, String transactionId, Map<String, Object> options);
 
   /**
    * Runs a recurrent purchase transaction against the <code>PaymentGateway</code>.
    *
    * @param money Amount for the transaction.
    * @param creditCard Credit Card to recurrently charge the transaction to.
-   * @param optionals Optional Gateway-specific data, that will be sent to the Gateway service.
+   * @param options Optional Gateway-specific data, that will be sent to the Gateway service.
    *
    * @return The response from the gateway.
    */
-  TransactionResponse recurring(Money money, CreditCard creditCard, Map<String, Object> optionals);
+  TransactionResponse recurring(Money money, CreditCard creditCard, Map<String, Object> options);
 
   /**
    * Securely stores the Credit Card data in the <code>PaymentGateway</code>.
    *
    * @param creditCard Credit Card information to store.
-   * @param optionals Optional Gateway-specific data, that will be sent to the Gateway service.
+   * @param options Optional Gateway-specific data, that will be sent to the Gateway service.
    *
    * @return The response from the gateway.
    */
-  TransactionResponse storeCreditCard(CreditCard creditCard, Map<String, Object> optionals);
+  TransactionResponse storeCreditCard(CreditCard creditCard, Map<String, Object> options);
 
   /**
    * Evicts a previously stored Credit Card data from the <code>PaymentGateway</code>.
    *
    * @param creditCardId Identifier of the Credit Card to evict.
-   * @param optionals Optional Gateway-specific data, that will be sent to the Gateway service.
+   * @param options Optional Gateway-specific data, that will be sent to the Gateway service.
    *
    * @return The response from the gateway.
    */
-  TransactionResponse evictCreditCard(String creditCardId, Map<String, Object> optionals);
+  TransactionResponse evictCreditCard(String creditCardId, Map<String, Object> options);
 
   /**
    * Returns true if this PaymentGateway supports <code>purchase</code> transactions.

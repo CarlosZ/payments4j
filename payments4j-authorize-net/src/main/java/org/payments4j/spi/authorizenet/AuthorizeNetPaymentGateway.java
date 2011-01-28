@@ -12,6 +12,7 @@ import java.math.BigDecimal;
 import java.util.Map;
 
 import static net.authorize.TransactionType.*;
+import static org.payments4j.common.ParamUtil.requireOption;
 
 /**
  * Implementation of <code>PaymentGateway</code> for Authorize.net using their provided Java SDK.
@@ -33,7 +34,7 @@ public class AuthorizeNetPaymentGateway implements PaymentGateway {
    * {@inheritDoc}
    */
   @Override
-  public TransactionResponse purchase(Money money, CreditCard creditCard, Map<String, Object> optionals) {
+  public TransactionResponse purchase(Money money, CreditCard creditCard, Map<String, Object> specificOptions) {
     return executeTransactionWithCreditCard(AUTH_CAPTURE, creditCard, money.getAmount());
   }
 
@@ -41,7 +42,7 @@ public class AuthorizeNetPaymentGateway implements PaymentGateway {
    * {@inheritDoc}
    */
   @Override
-  public TransactionResponse authorize(Money money, CreditCard creditCard, Map<String, Object> optionals) {
+  public TransactionResponse authorize(Money money, CreditCard creditCard, Map<String, Object> options) {
     return executeTransactionWithCreditCard(AUTH_ONLY, creditCard, money.getAmount());
   }
 
@@ -49,7 +50,7 @@ public class AuthorizeNetPaymentGateway implements PaymentGateway {
    * {@inheritDoc}
    */
   @Override
-  public TransactionResponse capture(Money money, String authorizationId, Map<String, Object> optionals) {
+  public TransactionResponse capture(Money money, String authorizationId, Map<String, Object> options) {
     return executeTransactionWithTransactionId(PRIOR_AUTH_CAPTURE, authorizationId, money.getAmount());
   }
 
@@ -57,7 +58,7 @@ public class AuthorizeNetPaymentGateway implements PaymentGateway {
    * {@inheritDoc}
    */
   @Override
-  public TransactionResponse revert(String transactionId, Map<String, Object> optionals) {
+  public TransactionResponse revert(String transactionId, Map<String, Object> options) {
     return executeTransactionWithTransactionId(VOID, transactionId, null);
   }
 
@@ -65,14 +66,17 @@ public class AuthorizeNetPaymentGateway implements PaymentGateway {
    * {@inheritDoc}
    */
   @Override
-  public TransactionResponse credit(Money money, String transactionId, Map<String, Object> optionals) {
+  public TransactionResponse credit(Money money, String transactionId, Map<String, Object> options) {
+    requireOption(options, "creditCardNumber");
+    requireOption(options, "creditCardMonth");
+    requireOption(options, "creditCardYear");
     Merchant merchant = buildMerchant(apiLoginId, transactionKey);
     Transaction transaction = merchant.createAIMTransaction(CREDIT, money.getAmount());
     transaction.setTransactionId(transactionId);
     net.authorize.data.creditcard.CreditCard creditCard = net.authorize.data.creditcard.CreditCard.createCreditCard();
-    creditCard.setCreditCardNumber((String) optionals.get("creditCardNumber"));
-    creditCard.setExpirationMonth((String) optionals.get("creditCardMonth"));
-    creditCard.setExpirationYear((String) optionals.get("creditCardYear"));
+    creditCard.setCreditCardNumber((String) options.get("creditCardNumber"));
+    creditCard.setExpirationMonth((String) options.get("creditCardMonth"));
+    creditCard.setExpirationYear((String) options.get("creditCardYear"));
     transaction.setCreditCard(creditCard);
     Result<?> result = merchant.postTransaction(transaction);
     return convert(result);
@@ -84,7 +88,7 @@ public class AuthorizeNetPaymentGateway implements PaymentGateway {
    * UNSUPPORTED
    */
   @Override
-  public TransactionResponse recurring(Money money, CreditCard creditCard, Map<String, Object> optionals) {
+  public TransactionResponse recurring(Money money, CreditCard creditCard, Map<String, Object> options) {
     throw new UnsupportedOperationException();
   }
 
@@ -94,7 +98,7 @@ public class AuthorizeNetPaymentGateway implements PaymentGateway {
    * UNSUPPORTED
    */
   @Override
-  public TransactionResponse storeCreditCard(CreditCard creditCard, Map<String, Object> optionals) {
+  public TransactionResponse storeCreditCard(CreditCard creditCard, Map<String, Object> options) {
     throw new UnsupportedOperationException();
   }
 
@@ -104,7 +108,7 @@ public class AuthorizeNetPaymentGateway implements PaymentGateway {
    * UNSUPPORTED
    */
   @Override
-  public TransactionResponse evictCreditCard(String creditCardId, Map<String, Object> optionals) {
+  public TransactionResponse evictCreditCard(String creditCardId, Map<String, Object> options) {
     throw new UnsupportedOperationException();
   }
 

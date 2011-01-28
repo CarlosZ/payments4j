@@ -6,8 +6,18 @@ public class AddressBuilder extends AbstractBaseModelBuilder<Address> {
     super(Address.class);
   }
 
-  public AddressBuilder withName(String name) {
-    values.put("name", name);
+  public AddressBuilder withFirstName(String firstName) {
+    values.put("firstName", firstName);
+    return this;
+  }
+
+  public AddressBuilder withLastName(String lastName) {
+    values.put("lastName", lastName);
+    return this;
+  }
+
+  public AddressBuilder withEmail(String email) {
+    values.put("email", email);
     return this;
   }
 

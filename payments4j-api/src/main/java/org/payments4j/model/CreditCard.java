@@ -12,7 +12,7 @@ import static com.google.common.base.Preconditions.checkArgument;
 public class CreditCard {
 
   public enum Type {
-    VISA, MASTER_CARD, AMERICAN_EXPRESS, DISCOVER, JCP, CARTE_BLANCHE
+    VISA, MASTER_CARD, AMERICAN_EXPRESS, DISCOVER, JCP, CARTE_BLANCHE, DINERS_CLUB, EN_ROUTE, LASER, MAESTRO, SOLO, SWITCH
   }
 
   private String firstName;

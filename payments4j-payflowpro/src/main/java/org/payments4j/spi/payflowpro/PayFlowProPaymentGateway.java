@@ -36,7 +36,7 @@ public class PayFlowProPaymentGateway implements PaymentGateway {
   }
 
   @Override
-  public TransactionResponse purchase(Money money, CreditCard creditCard, Map<String, Object> optionals) {
+  public TransactionResponse purchase(Money money, CreditCard creditCard, Map<String, Object> options) {
     List<Pair> paramsList = buildParamList(new MoneyConverter(money),
                                            new CreditCardConverter(creditCard),
                                            credentialsConverter);
@@ -44,7 +44,7 @@ public class PayFlowProPaymentGateway implements PaymentGateway {
   }
 
   @Override
-  public TransactionResponse authorize(Money money, CreditCard creditCard, Map<String, Object> optionals) {
+  public TransactionResponse authorize(Money money, CreditCard creditCard, Map<String, Object> options) {
     List<Pair> paramsList = buildParamList(new MoneyConverter(money),
                                            new CreditCardConverter(creditCard),
                                            credentialsConverter);
@@ -52,7 +52,7 @@ public class PayFlowProPaymentGateway implements PaymentGateway {
   }
 
   @Override
-  public TransactionResponse capture(Money money, String authorizationId, Map<String, Object> optionals) {
+  public TransactionResponse capture(Money money, String authorizationId, Map<String, Object> options) {
     List<Pair> paramsList = buildParamList(new MoneyConverter(money),
                                            credentialsConverter);
     paramsList.add(new Pair("ORIGID", authorizationId));
@@ -60,31 +60,31 @@ public class PayFlowProPaymentGateway implements PaymentGateway {
   }
 
   @Override
-  public TransactionResponse revert(String transactionId, Map<String, Object> optionals) {
+  public TransactionResponse revert(String transactionId, Map<String, Object> options) {
     List<Pair> paramsList = buildParamList(credentialsConverter);
     paramsList.add(new Pair("ORIGID", transactionId));
     return executeTransaction(paramsList, "V");
   }
 
   @Override
-  public TransactionResponse credit(Money money, String transactionId, Map<String, Object> optionals) {
+  public TransactionResponse credit(Money money, String transactionId, Map<String, Object> options) {
     List<Pair> paramsList = buildParamList(credentialsConverter);
     paramsList.add(new Pair("ORIGID", transactionId));
     return executeTransaction(paramsList, "C");
   }
 
   @Override
-  public TransactionResponse recurring(Money money, CreditCard creditCard, Map<String, Object> optionals) {
+  public TransactionResponse recurring(Money money, CreditCard creditCard, Map<String, Object> options) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public TransactionResponse storeCreditCard(CreditCard creditCard, Map<String, Object> optionals) {
+  public TransactionResponse storeCreditCard(CreditCard creditCard, Map<String, Object> options) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public TransactionResponse evictCreditCard(String creditCardId, Map<String, Object> optionals) {
+  public TransactionResponse evictCreditCard(String creditCardId, Map<String, Object> options) {
     throw new UnsupportedOperationException();
   }
 

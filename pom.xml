@@ -18,6 +18,7 @@
     <module>payments4j-api</module>
     <module>payments4j-authorize-net</module>
     <module>payments4j-payflowpro</module>
+    <module>payments4j-cybersource</module>
   </modules>
 
   <repositories>

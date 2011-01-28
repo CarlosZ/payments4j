@@ -9,7 +9,9 @@ import org.apache.commons.lang.builder.ToStringBuilder;
  */
 public class Address {
 
-  private String name;
+  private String firstName;
+  private String lastName;
+  private String email;
   private String company;
   private String address1;
   private String address2;
@@ -19,12 +21,28 @@ public class Address {
   private String postalCode;
   private String phone;
 
-  public String getName() {
-    return name;
+  public String getFirstName() {
+    return firstName;
   }
 
-  public void setName(String name) {
-    this.name = name;
+  public void setFirstName(String firstName) {
+    this.firstName = firstName;
+  }
+
+  public String getLastName() {
+    return lastName;
+  }
+
+  public void setLastName(String lastName) {
+    this.lastName = lastName;
+  }
+
+  public String getEmail() {
+    return email;
+  }
+
+  public void setEmail(String email) {
+    this.email = email;
   }
 
   public String getCompany() {
@@ -94,7 +112,9 @@ public class Address {
   @Override
   public int hashCode() {
     return new HashCodeBuilder()
-        .append(this.name)
+        .append(this.firstName)
+        .append(this.lastName)
+        .append(this.email)
         .append(this.company)
         .append(this.address1)
         .append(this.address2)
@@ -118,7 +138,9 @@ public class Address {
     Address that = (Address) o;
 
     return new EqualsBuilder()
-        .append(this.name, that.name)
+        .append(this.firstName, that.firstName)
+        .append(this.lastName, that.lastName)
+        .append(this.email, that.email)
         .append(this.company, that.company)
         .append(this.address1, that.address1)
         .append(this.address2, that.address2)
@@ -133,7 +155,9 @@ public class Address {
   @Override
   public String toString() {
     return new ToStringBuilder(this)
-        .append("name", this.name)
+        .append("firstName", this.firstName)
+        .append("lastName", this.lastName)
+        .append("email", this.email)
         .append("company", this.company)
         .append("address1", this.address1)
         .append("address2", this.address2)

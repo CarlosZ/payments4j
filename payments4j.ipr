@@ -568,6 +568,7 @@
       <module fileurl="file://$PROJECT_DIR$/payments4j.iml" filepath="$PROJECT_DIR$/payments4j.iml" />
       <module fileurl="file://$PROJECT_DIR$/payments4j-api/payments4j-api.iml" filepath="$PROJECT_DIR$/payments4j-api/payments4j-api.iml" />
       <module fileurl="file://$PROJECT_DIR$/payments4j-authorize-net/payments4j-authorize-net.iml" filepath="$PROJECT_DIR$/payments4j-authorize-net/payments4j-authorize-net.iml" />
+      <module fileurl="file://$PROJECT_DIR$/payments4j-cybersource/payments4j-cybersource.iml" filepath="$PROJECT_DIR$/payments4j-cybersource/payments4j-cybersource.iml" />
       <module fileurl="file://$PROJECT_DIR$/payments4j-native-examples/payments4j-native-examples.iml" filepath="$PROJECT_DIR$/payments4j-native-examples/payments4j-native-examples.iml" />
       <module fileurl="file://$PROJECT_DIR$/payments4j-payflowpro/payments4j-payflowpro.iml" filepath="$PROJECT_DIR$/payments4j-payflowpro/payments4j-payflowpro.iml" />
     </modules>
