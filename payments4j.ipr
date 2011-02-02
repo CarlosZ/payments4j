@@ -694,6 +694,28 @@
         <root url="jar://$MAVEN_REPOSITORY$/asm/asm/3.3/asm-3.3-sources.jar!/" />
       </SOURCES>
     </library>
+    <library name="Maven: ch.qos.logback:logback-classic:0.9.27">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/ch/qos/logback/logback-classic/0.9.27/logback-classic-0.9.27.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/ch/qos/logback/logback-classic/0.9.27/logback-classic-0.9.27-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/ch/qos/logback/logback-classic/0.9.27/logback-classic-0.9.27-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: ch.qos.logback:logback-core:0.9.27">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/ch/qos/logback/logback-core/0.9.27/logback-core-0.9.27.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/ch/qos/logback/logback-core/0.9.27/logback-core-0.9.27-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/ch/qos/logback/logback-core/0.9.27/logback-core-0.9.27-sources.jar!/" />
+      </SOURCES>
+    </library>
     <library name="Maven: com.google.guava:guava:r07">
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/com/google/guava/guava/r07/guava-r07.jar!/" />
@@ -1110,6 +1132,17 @@
       </JAVADOC>
       <SOURCES>
         <root url="jar://$MAVEN_REPOSITORY$/org/mockito/mockito-all/1.8.1/mockito-all-1.8.1-sources.jar!/" />
+      </SOURCES>
+    </library>
+    <library name="Maven: org.perf4j:perf4j:0.9.13">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/perf4j/perf4j/0.9.13/perf4j-0.9.13.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/perf4j/perf4j/0.9.13/perf4j-0.9.13-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/perf4j/perf4j/0.9.13/perf4j-0.9.13-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: org.slf4j:slf4j-api:1.6.1">

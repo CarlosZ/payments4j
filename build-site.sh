@@ -1,5 +1,6 @@
 #!/bin/bash
 
+export MAVEN_OPTS="-Xmx1024mb"
 mvn site
 
 site_dir=~/Documents/other/dev/payments4j-site/payments4j

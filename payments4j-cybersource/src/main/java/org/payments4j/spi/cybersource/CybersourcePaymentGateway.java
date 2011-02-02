@@ -9,8 +9,7 @@ import com.google.common.annotations.VisibleForTesting;
 import org.apache.cxf.endpoint.Endpoint;
 import org.apache.cxf.frontend.ClientProxy;
 import org.apache.cxf.ws.security.wss4j.WSS4JOutInterceptor;
-import org.payments4j.common.ParamUtil;
-import org.payments4j.core.PaymentGateway;
+import org.payments4j.core.AbstractPaymentGateway;
 import org.payments4j.core.TransactionResponse;
 import org.payments4j.model.CreditCard;
 import org.payments4j.model.Money;
@@ -23,7 +22,6 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.google.common.base.Preconditions.checkArgument;
 import static java.lang.String.format;
 import static org.apache.ws.security.WSConstants.PW_TEXT;
 import static org.apache.ws.security.handler.WSHandlerConstants.ACTION;
@@ -31,7 +29,7 @@ import static org.apache.ws.security.handler.WSHandlerConstants.PASSWORD_TYPE;
 import static org.apache.ws.security.handler.WSHandlerConstants.PW_CALLBACK_REF;
 import static org.apache.ws.security.handler.WSHandlerConstants.USER;
 import static org.apache.ws.security.handler.WSHandlerConstants.USERNAME_TOKEN;
-import static org.payments4j.common.ParamUtil.*;
+import static org.payments4j.common.ParamUtil.requireOption;
 import static org.payments4j.spi.cybersource.TransactionType.AUTHORIZE;
 import static org.payments4j.spi.cybersource.TransactionType.CAPTURE;
 import static org.payments4j.spi.cybersource.TransactionType.CREDIT;
@@ -43,7 +41,7 @@ import static org.payments4j.spi.cybersource.TransactionType.REVERT;
  * Implementation of <code>PaymentGateway</code> for Cybersource. For more details on the operations for Cybersource,
  * visit {@link http://apps.cybersource.com/library/documentation/dev_guides/CC_Svcs_SO_API/html/}.
  */
-public class CybersourcePaymentGateway implements PaymentGateway {
+public class CybersourcePaymentGateway extends AbstractPaymentGateway {
 
   public static final URL HOSTNAME = initUrl("https://ics2ws.ic3.com/commerce/1.x/transactionProcessor/CyberSourceTransaction_1.56.wsdl");
   public static final URL TEST_HOSTNAME = initUrl("https://ics2wstest.ic3.com/commerce/1.x/transactionProcessor/CyberSourceTransaction_1.56.wsdl");
@@ -61,7 +59,7 @@ public class CybersourcePaymentGateway implements PaymentGateway {
    * {@inheritDoc}
    */
   @Override
-  public TransactionResponse purchase(Money money, CreditCard creditCard, Map<String, Object> options) {
+  public TransactionResponse doPurchase(Money money, CreditCard creditCard, Map<String, Object> options) {
     requireOption(options, "referenceNumber");
     requireOption(options, "order");
     ITransactionProcessor processor = buildTransactionProcessor();
@@ -77,7 +75,7 @@ public class CybersourcePaymentGateway implements PaymentGateway {
    * {@inheritDoc}
    */
   @Override
-  public TransactionResponse authorize(Money money, CreditCard creditCard, Map<String, Object> options) {
+  public TransactionResponse doAuthorize(Money money, CreditCard creditCard, Map<String, Object> options) {
     requireOption(options, "referenceNumber");
     requireOption(options, "order");
     ITransactionProcessor processor = buildTransactionProcessor();
@@ -93,7 +91,7 @@ public class CybersourcePaymentGateway implements PaymentGateway {
    * {@inheritDoc}
    */
   @Override
-  public TransactionResponse capture(Money money, String authorizationId, Map<String, Object> options) {
+  public TransactionResponse doCapture(Money money, String authorizationId, Map<String, Object> options) {
     requireOption(options, "referenceNumber");
     ITransactionProcessor processor = buildTransactionProcessor();
 
@@ -108,7 +106,7 @@ public class CybersourcePaymentGateway implements PaymentGateway {
    * {@inheritDoc}
    */
   @Override
-  public TransactionResponse revert(String transactionId, Map<String, Object> options) {
+  public TransactionResponse doRevert(String transactionId, Map<String, Object> options) {
     requireOption(options, "referenceNumber");
     requireOption(options, "money");
 
@@ -126,7 +124,7 @@ public class CybersourcePaymentGateway implements PaymentGateway {
    * {@inheritDoc}
    */
   @Override
-  public TransactionResponse credit(Money money, String transactionId, Map<String, Object> options) {
+  public TransactionResponse doCredit(Money money, String transactionId, Map<String, Object> options) {
     requireOption(options, "referenceNumber");
     ITransactionProcessor processor = buildTransactionProcessor();
 
@@ -141,7 +139,7 @@ public class CybersourcePaymentGateway implements PaymentGateway {
    * {@inheritDoc}
    */
   @Override
-  public TransactionResponse recurring(Money money, CreditCard creditCard, Map<String, Object> options) {
+  public TransactionResponse doRecurring(Money money, CreditCard creditCard, Map<String, Object> options) {
     throw new UnsupportedOperationException();
   }
 
@@ -149,7 +147,7 @@ public class CybersourcePaymentGateway implements PaymentGateway {
    * {@inheritDoc}
    */
   @Override
-  public TransactionResponse storeCreditCard(CreditCard creditCard, Map<String, Object> options) {
+  public TransactionResponse doStoreCreditCard(CreditCard creditCard, Map<String, Object> options) {
     throw new UnsupportedOperationException();
   }
 
@@ -157,7 +155,7 @@ public class CybersourcePaymentGateway implements PaymentGateway {
    * {@inheritDoc}
    */
   @Override
-  public TransactionResponse evictCreditCard(String creditCardId, Map<String, Object> options) {
+  public TransactionResponse doEvictCreditCard(String creditCardId, Map<String, Object> options) {
     throw new UnsupportedOperationException();
   }
 

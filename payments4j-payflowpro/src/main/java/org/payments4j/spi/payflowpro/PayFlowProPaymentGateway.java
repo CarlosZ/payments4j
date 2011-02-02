@@ -5,7 +5,7 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.payments4j.core.PaymentGateway;
+import org.payments4j.core.AbstractPaymentGateway;
 import org.payments4j.core.TransactionResponse;
 import org.payments4j.model.CreditCard;
 import org.payments4j.model.Money;
@@ -23,7 +23,7 @@ import java.util.Map;
 /**
  * Payment Gateway for PayFlowPro. Implemented using the HTTPS interface.
  */
-public class PayFlowProPaymentGateway implements PaymentGateway {
+public class PayFlowProPaymentGateway extends AbstractPaymentGateway {
 
   public static final String HOST_ADDRESS = "https://payflowpro.paypal.com:443";
   public static final String TEST_HOST_ADDRESS = "https://pilot-payflowpro.paypal.com:443";
@@ -36,7 +36,7 @@ public class PayFlowProPaymentGateway implements PaymentGateway {
   }
 
   @Override
-  public TransactionResponse purchase(Money money, CreditCard creditCard, Map<String, Object> options) {
+  public TransactionResponse doPurchase(Money money, CreditCard creditCard, Map<String, Object> options) {
     List<Pair> paramsList = buildParamList(new MoneyConverter(money),
                                            new CreditCardConverter(creditCard),
                                            credentialsConverter);
@@ -44,7 +44,7 @@ public class PayFlowProPaymentGateway implements PaymentGateway {
   }
 
   @Override
-  public TransactionResponse authorize(Money money, CreditCard creditCard, Map<String, Object> options) {
+  public TransactionResponse doAuthorize(Money money, CreditCard creditCard, Map<String, Object> options) {
     List<Pair> paramsList = buildParamList(new MoneyConverter(money),
                                            new CreditCardConverter(creditCard),
                                            credentialsConverter);
@@ -52,7 +52,7 @@ public class PayFlowProPaymentGateway implements PaymentGateway {
   }
 
   @Override
-  public TransactionResponse capture(Money money, String authorizationId, Map<String, Object> options) {
+  public TransactionResponse doCapture(Money money, String authorizationId, Map<String, Object> options) {
     List<Pair> paramsList = buildParamList(new MoneyConverter(money),
                                            credentialsConverter);
     paramsList.add(new Pair("ORIGID", authorizationId));
@@ -60,31 +60,31 @@ public class PayFlowProPaymentGateway implements PaymentGateway {
   }
 
   @Override
-  public TransactionResponse revert(String transactionId, Map<String, Object> options) {
+  public TransactionResponse doRevert(String transactionId, Map<String, Object> options) {
     List<Pair> paramsList = buildParamList(credentialsConverter);
     paramsList.add(new Pair("ORIGID", transactionId));
     return executeTransaction(paramsList, "V");
   }
 
   @Override
-  public TransactionResponse credit(Money money, String transactionId, Map<String, Object> options) {
+  public TransactionResponse doCredit(Money money, String transactionId, Map<String, Object> options) {
     List<Pair> paramsList = buildParamList(credentialsConverter);
     paramsList.add(new Pair("ORIGID", transactionId));
     return executeTransaction(paramsList, "C");
   }
 
   @Override
-  public TransactionResponse recurring(Money money, CreditCard creditCard, Map<String, Object> options) {
+  public TransactionResponse doRecurring(Money money, CreditCard creditCard, Map<String, Object> options) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public TransactionResponse storeCreditCard(CreditCard creditCard, Map<String, Object> options) {
+  public TransactionResponse doStoreCreditCard(CreditCard creditCard, Map<String, Object> options) {
     throw new UnsupportedOperationException();
   }
 
   @Override
-  public TransactionResponse evictCreditCard(String creditCardId, Map<String, Object> options) {
+  public TransactionResponse doEvictCreditCard(String creditCardId, Map<String, Object> options) {
     throw new UnsupportedOperationException();
   }
 
