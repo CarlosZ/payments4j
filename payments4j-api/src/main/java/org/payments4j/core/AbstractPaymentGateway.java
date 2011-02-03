@@ -14,7 +14,13 @@ import static java.lang.String.format;
 import static org.payments4j.common.ParamUtil.requestId;
 
 /**
- *
+ * <p>
+ * Abstract Implementation of the <code>PaymentGateway</code> that logs operation parameters and responses as
+ * <code>TRACE</code> level messages.
+ * </p>
+ * <p>
+ * It also uses perf4j to keep track of the operations running time.
+ * </p>
  */
 public abstract class AbstractPaymentGateway implements PaymentGateway {
 
@@ -28,7 +34,8 @@ public abstract class AbstractPaymentGateway implements PaymentGateway {
     if (LOGGER.isTraceEnabled()) {
       LOGGER.warn("DANGER WILL Robinson: You have set the logger level to TRACE, \n" +
                   "which means credit card information will be logged!!\n" +
-                  "PCI-DSS guidelines recommend not to store unencrypted credit card data.");
+                  "PCI-DSS guidelines recommend not to store unencrypted credit card data in any form, \n" +
+                  "which includes log files.");
     }
   }
 
